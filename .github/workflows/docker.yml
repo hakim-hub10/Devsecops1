@@ -29,3 +29,9 @@ jobs:
       with:
         name: trivy-security-report
         path: trivy-report.json
+
+    - name: Upload Trivy SARIF to GitHub Security
+      uses: github/codeql-action/upload-sarif@v3
+      with:
+        sarif_file: trivy-results.sarif
+
