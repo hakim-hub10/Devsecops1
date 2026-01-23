@@ -14,24 +14,17 @@ jobs:
     - name: Build Docker image
       run: docker build -t mydevsecops .
 
-    - name: Scan image with Trivy (generate report)
+    - name: Scan image with Trivy (SARIF)
       uses: aquasecurity/trivy-action@master
       with:
         image-ref: mydevsecops
         scanners: vuln
         severity: CRITICAL
         exit-code: 0
-        format: json
-        output: trivy-report.json
-
-    - name: Upload Trivy scan report
-      uses: actions/upload-artifact@v4
-      with:
-        name: trivy-security-report
-        path: trivy-report.json
+        format: sarif
+        output: trivy-results.sarif
 
     - name: Upload Trivy SARIF to GitHub Security
       uses: github/codeql-action/upload-sarif@v3
       with:
         sarif_file: trivy-results.sarif
-
