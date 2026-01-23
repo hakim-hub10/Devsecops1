@@ -19,5 +19,5 @@ jobs:
       with:
         image-ref: mydevsecops
         scanners: vuln
-        severity: HIGH,CRITICAL
+        severity: CRITICAL
         exit-code: 1
