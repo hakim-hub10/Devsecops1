@@ -1,5 +1,5 @@
-![CI Status](https://github.com/hakim-hub10/mydevsecops/actions/workflows/ci.yml/badge.svg)
-![Docker Status](https://github.com/hakim-hub10/mydevsecops/actions/workflows/docker.yml/badge.svg)
+![CI Status](https://github.com/hakim-hub10/mydevsecops/actions/workflows/ci.yml/badge.svg?branch=main)
+![Docker Status](https://github.com/hakim-hub10/mydevsecops/actions/workflows/docker.yml/badge.svg?branch=main)
 
 # MyApp - DevSecOps Demo
 
