@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: Docker CI
 
 on:
   push:
@@ -7,24 +7,33 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  docker-build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Runner info
-        run: |
-          echo "Runner OS: $RUNNER_OS"
-          echo "Runner name: $RUNNER_NAME"
-          echo "Workspace: $GITHUB_WORKSPACE"
+      - name: Build Docker image
+        run: docker build -t mydevsecops-nginx:${{ github.sha }} .
 
-      - name: Say hello
-        run: echo "Hello from CI/CD! 🚀"
+      - name: List Docker images
+        run: docker images
 
-      - name: Show current directory
-        run: pwd
+      - name: Run Docker container
+        run: docker run -d -p 8080:80 --name test-container mydevsecops-nginx:${{ github.sha }}
 
-      - name: List files
-        run: ls -la
+      - name: Wait for container startup
+        run: sleep 5
+
+      - name: Test website with curl
+        run: curl -I http://localhost:8080
+
+      - name: Show container logs
+        run: docker logs test-container
+
+      - name: Stop container
+        run: docker stop test-container
+
+      - name: Remove container
+        run: docker rm test-container
