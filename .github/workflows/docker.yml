@@ -17,14 +17,13 @@ jobs:
       - name: Build Docker image
         run: docker build -t mydevsecops-nginx:${{ github.sha }} .
 
-      - name: Install Trivy
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y trivy
-
-      - name: Scan Docker image with Trivy
-        run: trivy image --severity HIGH,CRITICAL --ignore-unfixed --exit-code 0 mydevsecops-nginx:${{ github.sha }}
-
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.24.0
+        with:
+          image-ref: mydevsecops-nginx:${{ github.sha }}
+          severity: HIGH,CRITICAL
+          ignore-unfixed: true
+          exit-code: 0
 
       - name: List Docker images
         run: docker images
