@@ -1,4 +1,4 @@
-name: CI Pipeline (Docker + Nginx)
+name: CI Pipeline
 
 on:
   push:
@@ -7,30 +7,24 @@ on:
     branches: [ main ]
 
 jobs:
-  docker-build-test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Show files
+      - name: Runner info
+        run: |
+          echo "Runner OS: $RUNNER_OS"
+          echo "Runner name: $RUNNER_NAME"
+          echo "Workspace: $GITHUB_WORKSPACE"
+
+      - name: Say hello
+        run: echo "Hello from CI/CD! 🚀"
+
+      - name: Show current directory
+        run: pwd
+
+      - name: List files
         run: ls -la
-
-      - name: Build Docker image
-        run: docker build -t mydevsecops-nginx .
-
-      - name: Run Docker container
-        run: docker run -d -p 8080:80 --name nginx-test mydevsecops-nginx
-
-      - name: Wait for container startup
-        run: sleep 3
-
-      - name: Test website with curl
-        run: curl -I http://localhost:8080
-
-      - name: Stop container
-        run: docker stop nginx-test
-
-      - name: Remove container
-        run: docker rm nginx-test
