@@ -11,3 +11,4 @@ This project demonstrates a simple static web application running in Docker with
 ## Build image
 ```bash
 docker build -t mydevsecops .
+ 
