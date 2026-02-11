@@ -1,53 +1,53 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f766e, #065f46);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #0f766e, #065f46);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
+.card {
+  background: white;
+  border-radius: 22px;
+  padding: 45px;
+  max-width: 900px;
+  width: 100%;
+  box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.25);
 
-    .card {
-      background: white;
- 	    border-radius: 22px;
-      padding: 45px;
-      max-width: 900px;
-      width: 100%;
-      box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.25);
-      display: flex;
-      gap: 35px;
-      justify-content: space-between;
-  	
+  display: flex;
+  gap: 35px;
+  justify-content: space-between;
 
-  	  flex-direction: row-reverse;
-	    align-items: flex-start;
-    }
-
-    .logo {
-      width: 160px;
-      height: 160px;
-      border-radius: 18px;
-      object-fit: cover;
-    }
+  flex-direction: row-reverse;
+  align-items: stretch;
+  min-height: 420px;
+}
 
 .right-panel {
   display: flex;
   flex-direction: column;
-  align-items: center;  
-  justify-content: space-between;
-
+  align-items: center;
+  justify-content: flex-start;
   height: 100%;
+  flex-shrink: 0;
+}
+
+.logo {
+  width: 170px;
+  height: 170px;
+  border-radius: 18px;
+  object-fit: cover;
 }
 
 .stats {
-  margin-top: auto;
+  margin-top: 260px;
   display: flex;
-  gap: 20px;
-  padding-top: 20px;
-  font-size: 18px;
+  gap: 18px;
+  padding-top: 25px;
+  font-size: 16px;
   font-weight: bold;
   color: #0f766e;
 }
@@ -56,89 +56,103 @@
   background: #f0fdfa;
   padding: 10px 18px;
   border-radius: 12px;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.08);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  user-select: none;
+  transition: 0.3s;
 }
 
+.content {
+  flex: 1;
+}
 
-    .content h1 {
-      margin: 0;
-      font-size: 48px;
-      color: #0f766e;
-      font-weight: bold;
-      text-align: left;
+.content h1 {
+  margin: 0;
+  font-size: 52px;
+  color: #0f766e;
+  font-weight: bold;
+  text-align: left;
+}
 
-    }
+.rocket {
+  font-size: 42px;
+  margin-left: 10px;
+  vertical-align: middle;
+  display: inline-block;
+  position: relative;
+  top: -6px;
+}
 
-    .rocket {
-      font-size: 40px;
-      margin-left: 10px;
-      vertical-align: middle;
-      display: inline-block;
-      position: relative;
-      top: -6px;
-    }
+.content h2 {
+  margin: 10px 0 20px;
+  font-size: 28px;
+  color: #111827;
+  font-weight: 500;
+}
 
-    .content h2 {
-      margin: 10px 0 20px;
-      font-size: 28px;
-      color: #111827;
-      font-weight: 500;
-    }
+.content p {
+  margin: 0 0 20px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #374151;
+  max-width: 520px;
+}
 
-    .content p {
-      margin: 0 0 20px;
-      font-size: 18px;
-      line-height: 1.6;
-      color: #374151;
-      max-width: 520px;
-    }
+ul {
+  margin-top: 20px;
+  padding-left: 20px;
+  color: #374151;
+  font-size: 16px;
+  line-height: 1.6;
+}
 
-    ul {
-      margin-top: 20px;
-      padding-left: 20px;
-      color: #374151;
-      font-size: 16px;
-      line-height: 1.6;
-    }
+a {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 14px 24px;
+  background: #0f766e;
+  color: white;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 16px;
+  transition: 0.3s;
+}
 
-    a {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 14px 24px;
-      background: #0f766e;
-      color: white;
-      text-decoration: none;
-      border-radius: 12px;
-      font-weight: bold;
-      font-size: 16px;
-      transition: 0.3s;
-    }
+a:hover {
+  background: #065f46;
+}
 
-    a:hover {
-      background: #065f46;
-    }
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column;
+    text-align: center;
+    min-height: auto;
+  }
 
-    @media (max-width: 768px) {
-      .card {
-        flex-direction: column;
-        text-align: center;
-      }
+  .right-panel {
+    width: 100%;
+  }
 
-      ul {
-        text-align: left;
-      }
+  .content h1 {
+    font-size: 38px;
+    text-align: center;
+  }
 
-      .content h1 {
-        font-size: 38px;
-      }
+  .content h2 {
+    font-size: 22px;
+  }
 
-      .rocket {
-        font-size: 34px;
-        top: -4px;
-      }
+  .content p {
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-      .content h2 {
-        font-size: 22px;
-      }
-    }
-  
+  ul {
+    text-align: left;
+  }
+
+  .stats {
+    justify-content: center;
+  }
+}
