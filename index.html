@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MyApp DevSecOps</title>
+  <title>MyApp - DevSecOps CI/CD Demo</title>
 
   <style>
     body {
@@ -21,99 +21,84 @@
       background: white;
       border-radius: 22px;
       padding: 45px;
-      max-width: 750px;
+      max-width: 900px;
       width: 100%;
       box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.25);
-
-      display: grid;
-      grid-template-columns: 150px 1fr;
+      display: flex;
       gap: 35px;
       align-items: center;
-
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0px 20px 45px rgba(0, 0, 0, 0.35);
     }
 
     .logo {
-      width: 130px;
-      height: auto;
-      border-radius: 14px;
-      transition: transform 0.3s ease;
-    }
-
-    .logo:hover {
-      transform: scale(1.05);
-    }
-
-    .content {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      width: 160px;
+      height: 160px;
+      border-radius: 18px;
+      object-fit: cover;
     }
 
     .content h1 {
       margin: 0;
-      font-size: 46px;
-      font-weight: bold;
+      font-size: 48px;
       color: #0f766e;
-      letter-spacing: 1px;
+      font-weight: bold;
     }
 
     .content h2 {
-      margin: 12px 0 0 0;
+      margin: 10px 0 20px;
       font-size: 28px;
-      font-weight: 500;
       color: #111827;
+      font-weight: 500;
     }
 
     .content p {
+      margin: 0 0 20px;
       font-size: 18px;
-      line-height: 1.7;
+      line-height: 1.6;
       color: #374151;
-      margin: 22px 0;
-      max-width: 500px;
+      max-width: 520px;
     }
 
-    .content a {
+    ul {
+      margin-top: 20px;
+      padding-left: 20px;
+      color: #374151;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    a {
       display: inline-block;
-      margin-top: 10px;
-      padding: 12px 18px;
+      margin-top: 15px;
+      padding: 14px 24px;
       background: #0f766e;
       color: white;
-      border-radius: 12px;
       text-decoration: none;
+      border-radius: 12px;
       font-weight: bold;
-      font-size: 17px;
-      width: fit-content;
-      transition: background 0.3s ease, transform 0.2s ease;
+      font-size: 16px;
+      transition: 0.3s;
     }
 
-    .content a:hover {
+    a:hover {
       background: #065f46;
-      transform: scale(1.05);
     }
 
-    /* Mobile responsive */
-    @media (max-width: 700px) {
+    @media (max-width: 768px) {
       .card {
-        grid-template-columns: 1fr;
+        flex-direction: column;
         text-align: center;
       }
 
-      .logo {
-        margin: 0 auto;
+      ul {
+        text-align: left;
       }
 
-      .content p {
-        margin: 18px auto;
+      .content h1 {
+        font-size: 38px;
       }
 
-      .content a {
-        margin: 0 auto;
+      .content h2 {
+        font-size: 22px;
       }
     }
   </style>
@@ -126,22 +111,32 @@
     <img src="images/devsecops.svg" alt="DevSecOps logo" class="logo">
 
     <div class="content">
+
       <h1>MyApp 🚀</h1>
-      <h2>Hello from Docker</h2>
+      <h2>DevSecOps CI/CD Demo Project</h2>
 
       <p>
-        Jag börjar en ny kurs inom <strong>DevSecOps</strong><br>
-        där säkerhet integreras genom hela utvecklingskedjan.
+        Detta projekt visar en komplett DevSecOps-pipeline där en statisk webbapp
+        containeriseras med <strong>Docker</strong>, byggs och testas automatiskt
+        via <strong>GitHub Actions</strong>, samt säkerhetsskannas med
+        <strong>Trivy</strong>.
       </p>
 
-      <a href="https://owasp.org/www-project-devsecops-guideline/"
-         target="_blank"
-         rel="noopener noreferrer">
-        Läs mer om OWASP DevSecOps
+      <a href="https://github.com/hakim-hub10/Devsecops1" target="_blank" rel="noopener noreferrer">
+        View Project on GitHub
       </a>
+
+      <ul>
+        <li>Automatisk CI Pipeline (GitHub Actions)</li>
+        <li>Docker build + container test med curl</li>
+        <li>Trivy vulnerability scanning</li>
+        <li>Deployment via Render</li>
+      </ul>
+
     </div>
 
   </div>
 
 </body>
 </html>
+'
