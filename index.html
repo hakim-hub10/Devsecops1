@@ -1,70 +1,146 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="UTF-8">
-  <title>MyApp</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MyApp DevSecOps</title>
 
   <style>
     body {
       margin: 0;
-      font-family: "Segoe UI", Arial, sans-serif;
-      background: linear-gradient(135deg, #00796b, #004d40);
-      color: #ffffff;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0f766e, #065f46);
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
+      padding: 20px;
     }
 
     .card {
-      background: #ffffff;
-      color: #333;
-      padding: 40px;
-      border-radius: 12px;
-      width: 420px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      text-align: center;
+      background: white;
+      border-radius: 22px;
+      padding: 45px;
+      max-width: 750px;
+      width: 100%;
+      box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.25);
+
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 35px;
+      align-items: center;
+
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    h1 {
-      color: #00796b;
-      margin-bottom: 10px;
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 20px 45px rgba(0, 0, 0, 0.35);
     }
 
-    p {
-      font-size: 16px;
-      line-height: 1.6;
+    .logo {
+      width: 130px;
+      height: auto;
+      border-radius: 14px;
+      transition: transform 0.3s ease;
     }
 
-    a {
-      display: inline-block;
-      margin-top: 15px;
-      color: #00796b;
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .content h1 {
+      margin: 0;
+      font-size: 46px;
       font-weight: bold;
-      text-decoration: none;
+      color: #0f766e;
+      letter-spacing: 1px;
     }
 
-    a:hover {
-      text-decoration: underline;
+    .content h2 {
+      margin: 12px 0 0 0;
+      font-size: 28px;
+      font-weight: 500;
+      color: #111827;
+    }
+
+    .content p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #374151;
+      margin: 22px 0;
+      max-width: 500px;
+    }
+
+    .content a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 12px 18px;
+      background: #0f766e;
+      color: white;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 17px;
+      width: fit-content;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .content a:hover {
+      background: #065f46;
+      transform: scale(1.05);
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 700px) {
+      .card {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .logo {
+        margin: 0 auto;
+      }
+
+      .content p {
+        margin: 18px auto;
+      }
+
+      .content a {
+        margin: 0 auto;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <div class="card">
-    <h1>MyApp 🚀</h1>
-    <h2>Hello from Docker</h2>
-    <p>
-      Jag börjar en ny kurs inom <strong>DevSecOps</strong><br>
-      där säkerhet integreras genom hela utvecklingskedjan.
-    </p>
 
-    <a href="https://owasp.org/www-project-devsecops-guideline/"
-       target="_blank"
-       rel="noopener noreferrer">
-      Läs mer om OWASP DevSecOps
-    </a>
+    <img src="images/devsecops.svg" alt="DevSecOps logo" class="logo">
+
+    <div class="content">
+      <h1>MyApp 🚀</h1>
+      <h2>Hello from Docker</h2>
+
+      <p>
+        Jag börjar en ny kurs inom <strong>DevSecOps</strong><br>
+        där säkerhet integreras genom hela utvecklingskedjan.
+      </p>
+
+      <a href="https://owasp.org/www-project-devsecops-guideline/"
+         target="_blank"
+         rel="noopener noreferrer">
+        Läs mer om OWASP DevSecOps
+      </a>
+    </div>
+
   </div>
 
 </body>

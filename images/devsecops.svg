@@ -1,0 +1,58 @@
+<svg width="512" height="512" viewBox="0 0 512 512"
+     xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Background -->
+  <rect width="512" height="512" fill="#0f172a"/>
+
+  <!-- Shield -->
+  <path d="M256 40
+           C170 70 96 80 96 80
+           v150
+           c0 120 160 202 160 202
+           s160-82 160-202
+           V80
+           s-74-10-160-40z"
+        fill="#0d9488"/>
+
+  <!-- Inner shield -->
+  <path d="M256 85
+           C190 110 130 118 130 118
+           v112
+           c0 90 126 150 126 150
+           s126-60 126-150
+           V118
+           s-60-8-126-33z"
+        fill="#14b8a6"/>
+
+  <!-- Lock body -->
+  <rect x="190" y="210" width="132" height="120" rx="20"
+        fill="#86efac"/>
+
+  <!-- Lock shackle -->
+  <path d="M210 210
+           v-40
+           a46 46 0 0 1 92 0
+           v40"
+        fill="none"
+        stroke="#86efac"
+        stroke-width="14"/>
+
+  <!-- Keyhole -->
+  <circle cx="256" cy="260" r="14" fill="#064e3b"/>
+  <rect x="248" y="260" width="16" height="32" fill="#064e3b"/>
+
+  <!-- Braces -->
+  <text x="160" y="260" font-size="64" fill="#022c22">{</text>
+  <text x="340" y="260" font-size="64" fill="#022c22">}</text>
+
+  <!-- Text -->
+  <text x="256" y="460"
+        text-anchor="middle"
+        font-size="56"
+        fill="#0d9488"
+        font-family="Arial, Helvetica, sans-serif">
+    DevSecOps
+  </text>
+
+</svg>
+
