@@ -1,4 +1,4 @@
-name: Docker CI
+name: Docker Build and Scan
 
 on:
   push:
@@ -7,19 +7,22 @@ on:
     branches: [ main ]
 
 jobs:
-  docker-build:
+  build-and-scan:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # Build Docker image
       - name: Build Docker image
         run: docker build -t mydevsecops-nginx:${{ github.sha }} .
 
+      # Show Docker images
       - name: List Docker images
         run: docker images
 
+      # Run container and test
       - name: Run Docker container
         run: docker run -d -p 8080:80 --name test-container mydevsecops-nginx:${{ github.sha }}
 
@@ -32,8 +35,16 @@ jobs:
       - name: Show container logs
         run: docker logs test-container
 
-      - name: Stop container
-        run: docker stop test-container
+      - name: Stop and remove container
+        run: |
+          docker stop test-container
+          docker rm test-container
 
-      - name: Remove container
-        run: docker rm test-container
+      # CodeQL Security Scan (UPDATED TO v4)
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v4
+        with:
+          languages: javascript
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v4
