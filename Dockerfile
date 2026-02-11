@@ -1,5 +1,5 @@
 # ----------------------------------------
-# MyApp - Nginx Docker Image
+# NexaPointIT - Nginx Docker Image
 # ----------------------------------------
 FROM nginx:alpine
 

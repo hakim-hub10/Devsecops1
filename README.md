@@ -1,7 +1,7 @@
 ![CI Status](https://github.com/hakim-hub10/Devsecops1/actions/workflows/ci.yml/badge.svg?branch=main)
 ![Docker Status](https://github.com/hakim-hub10/Devsecops1/actions/workflows/docker.yml/badge.svg?branch=main)
 
-# MyApp - DevSecOps Demo
+# NexaPointIT - DevSecOps Demo
 
 This project demonstrates a simple static web application running in Docker with nginx.
 
