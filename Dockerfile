@@ -1,7 +1,9 @@
 # ----------------------------------------
 # NexaPointIT - Nginx Docker Image
 # ----------------------------------------
-FROM nginx:alpine
+# Default version kan ändras via GitHub Actions matrix
+ARG NGINX_VERSION=alpine
+FROM nginx:${NGINX_VERSION}
 
 # Remove default nginx static files
 RUN rm -rf /usr/share/nginx/html/*

@@ -1,0 +1,39 @@
+name: Docker Matrix Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  docker-matrix-test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        nginx-version: [alpine, 1.27-alpine, 1.28-alpine]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image (Matrix)
+        run: docker build --build-arg NGINX_VERSION=${{ matrix.nginx-version }} -t mydevsecops-nginx:${{ matrix.nginx-version }} .
+
+      - name: Run container
+        run: docker run -d -p 8080:80 --name test-container mydevsecops-nginx:${{ matrix.nginx-version }}
+
+      - name: Wait for container startup
+        run: sleep 5
+
+      - name: Test website with curl
+        run: curl -I http://localhost:8080
+
+      - name: Check page content
+        run: curl -s http://localhost:8080 | grep "NexaPointIT"
+
+      - name: Stop and remove container
+        run: |
+          docker stop test-container
+          docker rm test-container
