@@ -42,7 +42,7 @@ body {
 }
 
 .stats {
-  margin-top: auto;
+  margin-top: 580px;
   display: flex;
   gap: 18px;
   padding-top: 25px;
