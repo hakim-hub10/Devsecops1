@@ -1,0 +1,72 @@
+name: Docker Multi-Stage CI/CD
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t mydevsecops-nginx:${{ github.sha }} .
+
+      - name: List Docker images
+        run: docker images
+
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Build again because jobs run on separate runners
+      - name: Build Docker image
+        run: docker build -t mydevsecops-nginx:${{ github.sha }} .
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.24.0
+        with:
+          image-ref: mydevsecops-nginx:${{ github.sha }}
+          severity: HIGH,CRITICAL
+          ignore-unfixed: true
+          exit-code: 0
+
+      - name: Run Docker container
+        run: docker run -d -p 8080:80 --name test-container mydevsecops-nginx:${{ github.sha }}
+
+      - name: Wait for container startup
+        run: sleep 5
+
+      - name: Test website with curl
+        run: curl -I http://localhost:8080
+
+      - name: Check page content
+        run: curl -s http://localhost:8080 | grep -i "NexaPointIT"
+
+      - name: Show container logs
+        run: docker logs test-container
+
+      - name: Stop and remove container
+        run: |
+          docker stop test-container
+          docker rm test-container
+
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Deploy step placeholder
+        run: echo "Deploying to production... 🚀"
