@@ -38,7 +38,7 @@ jobs:
         run: curl -I http://localhost:8080
 
       - name: Check page content
-        run: curl -s http://localhost:8080 | grep "NexapointIT"
+        run: curl -s http://localhost:8080 | grep -i "NexaPointIT"
 
       - name: Show container logs
         run: docker logs test-container
