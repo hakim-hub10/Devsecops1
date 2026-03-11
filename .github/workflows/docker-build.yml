@@ -2,7 +2,7 @@ name: Build and Push Docker Image
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
   build:
@@ -13,13 +13,14 @@ jobs:
       packages: write
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Login to GHCR
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Build image
-        run: docker build -t ghcr.io/hakim-hub10/devsecops1:latest .
+        run: docker build -t ghcr.io/${{ github.repository_owner }}/devsecops1:latest .
 
       - name: Push image
-        run: docker push ghcr.io/hakim-hub10/devsecops1:latest
+        run: docker push ghcr.io/${{ github.repository_owner }}/devsecops1:latest
